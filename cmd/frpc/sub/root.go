@@ -92,7 +92,7 @@ func RegisterCommonFlags(cmd *cobra.Command) {
 	cmd.PersistentFlags().StringVarP(&dnsServer, "dns_server", "", "", "specify dns server instead of using system default one")
 }
 func EasyStartGetConf(token string, tunnelId string) {
-	req, err := http.NewRequest("GET", "https://api.mefrp.com/api/v2/tunnel/conf/id/"+tunnelId, nil)
+	req, err := http.NewRequest("GET", "https://klfrp.api.ximuc.top/api/v2/tunnel/conf/id/"+tunnelId, nil)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -108,7 +108,7 @@ func EasyStartGetConf(token string, tunnelId string) {
 		return
 	}
 	if response.StatusCode != http.StatusOK {
-		err = fmt.Errorf("ME Frp API 校验失败 可能是您的启动信息错误%d", response.StatusCode)
+		err = fmt.Errorf("KL Frp API 校验失败 可能是您的启动信息错误%d", response.StatusCode)
 		bodyBytes, err := ioutil.ReadAll(response.Body)
 		if err != nil {
 			fmt.Println(err)
